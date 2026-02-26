@@ -3,241 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Museum of You - Project Guidelines (Print)</title>
+    <title>The Museum of You: Brochure Project</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
     <style>
-        /* Base Print Typography & Reset */
+        :root {
+            --museum-navy: #0f172a;
+            --museum-gold: #d4af37;
+            --museum-marble: #f8fafc;
+        }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #000;
-            background-color: #fff;
-            line-height: 1.5;
-            max-width: 210mm; /* A4 Width */
-            margin: 0 auto;
-            padding: 15mm;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #e2e8f0;
+            color: var(--museum-navy);
+            line-height: 1.6;
         }
-
         h1, h2, h3, .serif {
-            font-family: 'Georgia', serif;
+            font-family: 'Playfair Display', serif;
         }
-
-        /* Header Section */
-        .header {
-            text-align: center;
-            border-bottom: 4px double #000;
-            padding-bottom: 15px;
-            margin-bottom: 25px;
+        .museum-shadow {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
-
-        .header h1 {
-            font-size: 32px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin: 5px 0;
+        .gold-border {
+            border: 2px solid var(--museum-gold);
         }
-
-        .header .subtitle {
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: #555;
-            margin: 0;
+        .floorplan-bg {
+            background-image: radial-gradient(var(--museum-navy) 1px, transparent 1px);
+            background-size: 20px 20px;
+            background-color: var(--museum-marble);
         }
-
-        .header .quote {
-            font-style: italic;
-            font-size: 16px;
-            color: #333;
-            margin-top: 10px;
+        .ticket-cutout {
+            position: relative;
         }
-
-        /* Student Info Box */
-        .student-info {
-            display: flex;
-            justify-content: space-between;
-            font-weight: bold;
-            margin-bottom: 20px;
-            font-size: 14px;
+        .ticket-cutout::before, .ticket-cutout::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 30px;
+            height: 30px;
+            background-color: var(--museum-navy);
+            border-radius: 50%;
+            transform: translateY(-50%);
         }
-
-        /* Commission / Brief Box */
-        .brief-box {
-            border: 2px solid #000;
-            padding: 15px;
-            background-color: #f9f9f9;
-            margin-bottom: 25px;
-            page-break-inside: avoid;
-        }
-
-        .brief-box h3 {
-            margin-top: 0;
-            text-transform: uppercase;
-            font-size: 16px;
-            border-bottom: 1px solid #000;
-            padding-bottom: 5px;
-        }
-
-        .requirements-list {
-            font-weight: bold;
-            margin-top: 10px;
-        }
-
-        /* Step Sections */
-        .step-section {
-            margin-bottom: 20px;
-            padding: 15px;
-            border: 1px solid #999;
-            border-left: 5px solid #000;
-            page-break-inside: avoid;
-        }
-
-        .step-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .step-number {
-            background-color: #000;
-            color: #fff;
-            width: 25px;
-            height: 25px;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            font-family: sans-serif;
-            margin-right: 10px;
-        }
-
-        .step-section h2 {
-            margin: 0;
-            font-size: 18px;
-        }
-
-        /* Callouts / Examples */
-        .example-box {
-            border: 1px dashed #666;
-            padding: 10px 15px;
-            background-color: #fafafa;
-            margin-top: 10px;
-            font-size: 13px;
-        }
-
-        .example-box h4 {
-            margin-top: 0;
-            margin-bottom: 5px;
-        }
-
-        .grammar-warning {
-            font-weight: bold;
-            display: block;
-            margin-top: 10px;
-            font-size: 14px;
-        }
-
-        /* Footer */
-        .deliverable-box {
-            border: 3px solid #000;
-            text-align: center;
-            padding: 15px;
-            margin-top: 30px;
-            page-break-inside: avoid;
-        }
-
-        .deliverable-box h3 {
-            margin-top: 0;
-            text-transform: uppercase;
-        }
-
-        /* Print Overrides */
-        @media print {
-            body { 
-                padding: 0; 
-                margin: 15mm; 
-            }
-            .brief-box, .step-section, .example-box, .deliverable-box {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-        }
+        .ticket-cutout::before { left: -15px; }
+        .ticket-cutout::after { right: -15px; }
     </style>
 </head>
-<body>
+<body class="p-4 md:p-12 min-h-screen flex justify-center items-center bg-slate-800">
 
-    <div class="header">
-        <p class="subtitle">Unit 5 Final Design Project</p>
-        <h1>The Museum of You</h1>
-        <p class="quote">"Every person is a walking civilization. It is time to curate your legacy."</p>
-    </div>
-
-    <div class="student-info">
-        <span>Name: __________________________________</span>
-        <span>Date: ________________________</span>
-    </div>
-
-    <div class="brief-box">
-        <h3>The Commission</h3>
-        <p>The Global Heritage Foundation is funding a brand-new museum dedicated entirely to <strong>your life, memories, and values</strong>.</p>
-        <p>Your task is to design a visually stunning, persuasive <strong>Visitor Brochure</strong> to attract tourists and explain the critical vision behind your collection.</p>
+    <div class="max-w-5xl w-full bg-white museum-shadow relative overflow-hidden">
         
-        <div class="requirements-list">
-            Brochure Requirements:
-            <ul style="margin-top: 5px; margin-bottom: 0;">
-                <li>Identity & Vision Statement</li>
-                <li>3 Featured Artifacts (with photos/drawings)</li>
-                <li>Speculative Descriptions (Grammar focus)</li>
-                <li>Curator's Philosophy (Critical Thinking focus)</li>
-            </ul>
-        </div>
-    </div>
+        <!-- Architectural Top Border -->
+        <div class="h-4 w-full bg-slate-900 border-b-4 border-yellow-500"></div>
 
-    <div class="step-section">
-        <div class="step-header">
-            <span class="step-number">1</span>
-            <h2>The Front Cover: Vision</h2>
-        </div>
-        <p>To attract visitors, your brochure needs a powerful cover. You must decide on:</p>
-        <ul>
-            <li><strong>The Name:</strong> (e.g., <em>The Gallery of Emre, The Teenage Archives</em>)</li>
-            <li><strong>The Hook:</strong> A catchy slogan to make tourists want to enter.</li>
-            <li><strong>The Vision Statement:</strong> Write 2 sentences using unit vocabulary (e.g., <em>preserve, legacy, heritage, exhibit</em>) explaining *why* this museum was built.</li>
-        </ul>
-    </div>
+        <!-- Header Section -->
+        <header class="text-center pt-16 pb-12 px-8 relative">
+            <div class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/stardust.png');"></div>
+            
+            <p class="uppercase tracking-[0.3em] text-sm font-bold text-slate-500 mb-4">Unit 5 Final Design Project</p>
+            <h1 class="text-5xl md:text-7xl font-black mb-4 text-slate-900 tracking-tight">The Museum of <span class="text-yellow-600 italic">You</span></h1>
+            <div class="w-24 h-1 bg-yellow-500 mx-auto mb-6"></div>
+            <p class="text-xl md:text-2xl text-slate-600 serif italic max-w-2xl mx-auto">
+                "Every person is a walking civilization. It is time to curate your legacy."
+            </p>
+        </header>
 
-    <div class="step-section">
-        <div class="step-header">
-            <span class="step-number">2</span>
-            <h2>Inside Pages: Exhibit Highlights & Grammar</h2>
-        </div>
-        <p>Select <strong>three specific items</strong> from your life (e.g., a skateboard, a concert ticket, a favorite hoodie). Include a visual for each, accompanied by a <strong>Speculative Description</strong> to entertain your visitors.</p>
-        
-        <span class="grammar-warning">⚠️ Grammar Requirement: You must guess how historians in the year 3000 will interpret each item using modals (<em>must have, might be, can't have</em>).</span>
-        
-        <div class="example-box">
-            <h4>Example Brochure Text: Exhibit 1 - The Stratocaster Guitar</h4>
-            <p><em>"This object produced loud, echoing noises. Future historians <strong>might think</strong> it was a weapon used to scare enemies. It <strong>must have required</strong> great skill to hold, but it <strong>can't have been</strong> comfortable to sleep with."</em></p>
-        </div>
-    </div>
+        <!-- Main Content -->
+        <div class="flex flex-col md:flex-row border-t border-slate-200">
+            
+            <!-- Left Sidebar (The Brief) -->
+            <div class="md:w-1/3 bg-slate-50 p-8 border-r border-slate-200">
+                <h3 class="serif text-2xl font-bold mb-4 text-slate-900">The Commission</h3>
+                <p class="mb-6 text-sm text-slate-600 text-justify">
+                    The Global Heritage Foundation is funding a brand-new museum dedicated entirely to <strong>your life, memories, and values</strong>. 
+                </p>
+                <p class="mb-6 text-sm text-slate-600 text-justify">
+                    Your task is to design a visually stunning, persuasive <strong>Visitor Brochure</strong> to attract tourists and explain the critical vision behind your collection.
+                </p>
+                
+                <div class="bg-slate-900 text-white p-6 rounded-lg shadow-lg relative ticket-cutout mt-8">
+                    <p class="text-yellow-500 text-xs font-bold tracking-widest uppercase mb-2">Brochure Contents</p>
+                    <ul class="text-sm space-y-3 font-medium">
+                        <li class="flex items-start gap-2"><span>🏛️</span> <span>Identity & Vision Statement</span></li>
+                        <li class="flex items-start gap-2"><span>💎</span> <span>3 Featured Artifacts</span></li>
+                        <li class="flex items-start gap-2"><span>✍️</span> <span>Speculative Descriptions</span></li>
+                        <li class="flex items-start gap-2"><span>🧠</span> <span>Curator's Philosophy</span></li>
+                    </ul>
+                </div>
+            </div>
 
-    <div class="step-section">
-        <div class="step-header">
-            <span class="step-number">3</span>
-            <h2>Back Cover: Curator's Philosophy</h2>
+            <!-- Right Content (The Steps) -->
+            <div class="md:w-2/3 floorplan-bg p-8 md:p-12 relative z-10 h-[600px] overflow-y-auto">
+                
+                <!-- Step 1 -->
+                <div class="mb-10 bg-white p-6 md:p-8 rounded-xl shadow-md border border-slate-200 hover:-translate-y-1 transition-transform">
+                    <div class="flex items-center gap-4 mb-4 border-b border-slate-100 pb-4">
+                        <span class="bg-yellow-500 text-white w-10 h-10 flex items-center justify-center font-bold text-xl rounded-sm">1</span>
+                        <h2 class="serif text-2xl font-bold text-slate-800">The Front Cover: Vision</h2>
+                    </div>
+                    <p class="text-slate-600 mb-4 text-sm">To attract visitors, your brochure needs a powerful cover. Decide on:</p>
+                    <ul class="list-disc list-inside text-sm text-slate-700 space-y-2 ml-2">
+                        <li><strong>The Name:</strong> (e.g., <em>The Gallery of Emre, The Teenage Archives</em>)</li>
+                        <li><strong>The Hook:</strong> A catchy slogan to make tourists want to enter.</li>
+                        <li><strong>The Vision Statement:</strong> Write 2 sentences using unit vocabulary (e.g., <em>preserve, legacy, heritage, exhibit</em>) explaining *why* this museum was built.</li>
+                    </ul>
+                </div>
+
+                <!-- Step 2 & 3 Combined -->
+                <div class="mb-10 bg-white p-6 md:p-8 rounded-xl shadow-md border-l-4 border-slate-900 hover:-translate-y-1 transition-transform relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-slate-100 rounded-bl-full -z-10"></div>
+                    <div class="flex items-center gap-4 mb-4 border-b border-slate-100 pb-4">
+                        <span class="bg-slate-900 text-white w-10 h-10 flex items-center justify-center font-bold text-xl rounded-sm">2</span>
+                        <h2 class="serif text-2xl font-bold text-slate-800">Inside Pages: Exhibit Highlights</h2>
+                    </div>
+                    <p class="text-slate-600 mb-4 text-sm">Select <strong>three specific items</strong> from your life (e.g., a skateboard, a concert ticket, a favorite hoodie). Include a photo for each, accompanied by a <strong>Speculative Description</strong> to entertain your visitors.</p>
+                    <p class="text-slate-600 mb-4 text-sm font-bold">⚠️ Grammar Requirement: You must guess how historians in the year 3000 will interpret each item using modals (must have, might be, can't have).</p>
+                    
+                    <div class="bg-slate-50 p-4 rounded border border-slate-200 text-sm">
+                        <p class="font-bold text-slate-800 uppercase tracking-widest text-xs mb-2">Example Brochure Text:</p>
+                        <h4 class="font-bold serif text-lg text-yellow-700">Exhibit 1: The Stratocaster Guitar</h4>
+                        <p class="italic text-slate-600 mb-2 border-b border-slate-200 pb-2">"This object produced loud, echoing noises. Future historians <strong class="text-slate-900">might think</strong> it was a weapon used to scare enemies. It <strong class="text-slate-900">must have required</strong> great skill to hold, but it <strong class="text-slate-900">can't have been</strong> comfortable to sleep with."</p>
+                    </div>
+                </div>
+
+                <!-- Step 4: Critical Thinking (UPDATED) -->
+                <div class="mb-10 bg-gradient-to-br from-slate-900 to-slate-800 p-6 md:p-8 rounded-xl shadow-lg border border-slate-700 hover:-translate-y-1 transition-transform text-white">
+                    <div class="flex items-center gap-4 mb-4 border-b border-slate-600 pb-4">
+                        <span class="bg-yellow-500 text-slate-900 w-10 h-10 flex items-center justify-center font-bold text-xl rounded-sm">3</span>
+                        <h2 class="serif text-2xl font-bold text-white">Back Cover: Curator's Philosophy</h2>
+                    </div>
+                    <p class="text-slate-300 mb-4 text-sm">This is where you show deep critical thinking. Visitors want to know the deeper meaning behind your collection. Write a final "Curator's Philosophy" paragraph for the back cover addressing these core questions:</p>
+                    
+                    <div class="bg-slate-800 p-5 rounded border-l-4 border-yellow-500 text-sm italic font-medium text-slate-200 space-y-4">
+                        <p><strong class="text-yellow-400 not-italic uppercase text-xs tracking-widest block mb-1">1. The Ultimate Artifact</strong> If this museum burns down in a thousand years, and archaeologists can only save ONE of your artifacts, which one should it be? What does that single item teach the future about what the youth of the 21st century truly valued?</p>
+                        
+                        <p><strong class="text-yellow-400 not-italic uppercase text-xs tracking-widest block mb-1">2. Perspective & Bias</strong> To what extent does perspective and bias influence whether that single artifact can be considered reliable evidence of the values of 21st-century youth?</p>
+                        
+                        <p><strong class="text-yellow-400 not-italic uppercase text-xs tracking-widest block mb-1">3. The Curator's Responsibility</strong> How does the act of selecting and preserving knowledge shape representation, and what responsibilities come with deciding what future generations will know about us?</p>
+                    </div>
+                </div>
+
+            </div>
         </div>
-        <p>This is where you show deep critical thinking. Visitors want to know the meaning behind the collection. Write a final paragraph for the back cover answering this question:</p>
-        
-        <div class="example-box" style="border-style: solid; border-width: 2px;">
-            <p style="margin: 0; font-weight: bold; font-style: italic; text-align: center;">
-                "If this museum burns down in a thousand years, and archaeologists can only save ONE of your artifacts, which one should it be? What does that single item teach the future about what the youth of the 21st century truly valued?"
+
+        <!-- Footer / Submission -->
+        <div class="bg-slate-900 text-center p-8 border-t-4 border-yellow-500">
+            <h3 class="text-white font-bold tracking-widest uppercase mb-2">Final Deliverable</h3>
+            <p class="text-slate-400 text-sm max-w-xl mx-auto">
+                Use a template tool (like Canva's "Tri-Fold Brochure" or Google Docs) to design your final product. Pay attention to layout, images, and visual appeal. Submit your digital brochure PDF to the class folder!
             </p>
         </div>
-    </div>
 
-    <div class="deliverable-box">
-        <h3>Final Deliverable</h3>
-        <p style="margin-bottom: 0;">
-            Use a template tool (like Canva's "Tri-Fold Brochure" or Google Docs) to design your final product. Pay attention to layout, images, and visual appeal. Submit your digital brochure PDF to the class folder!
-        </p>
     </div>
 
 </body>
