@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;800&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
             --museum-navy: #0f172a;
@@ -24,7 +24,7 @@
             font-family: 'Playfair Display', serif;
         }
         .museum-shadow {
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
         .gold-border {
             border: 2px solid var(--museum-gold);
@@ -43,29 +43,46 @@
             top: 50%;
             width: 30px;
             height: 30px;
-            background-color: var(--museum-navy);
+            background-color: var(--museum-marble);
             border-radius: 50%;
             transform: translateY(-50%);
         }
         .ticket-cutout::before { left: -15px; }
         .ticket-cutout::after { right: -15px; }
+        
+        /* Custom Scrollbar for Right Panel */
+        .custom-scroll::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: #e2e8f0;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 20px;
+        }
     </style>
 </head>
-<body class="p-4 md:p-12 min-h-screen flex justify-center items-center bg-slate-800">
+<body class="p-4 md:p-8 min-h-screen flex justify-center items-center bg-slate-800">
 
-    <div class="max-w-5xl w-full bg-white museum-shadow relative overflow-hidden">
+    <div class="max-w-6xl w-full bg-white museum-shadow relative overflow-hidden rounded-lg">
         
         <!-- Architectural Top Border -->
         <div class="h-4 w-full bg-slate-900 border-b-4 border-yellow-500"></div>
 
         <!-- Header Section -->
         <header class="text-center pt-16 pb-12 px-8 relative">
+            <!-- Darüşşafaka Logo -->
+            <div class="absolute top-8 left-8">
+                <img src="darussafaka_logo.png" alt="Darüşşafaka Eğitim Kurumları" class="h-16 object-contain" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x80/ffffff/006633?text=Darüşşafaka+Logo';">
+            </div>
+
             <div class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/stardust.png');"></div>
             
-            <p class="uppercase tracking-[0.3em] text-sm font-bold text-slate-500 mb-4">Unit 5 Final Design Project</p>
-            <h1 class="text-5xl md:text-7xl font-black mb-4 text-slate-900 tracking-tight">The Museum of <span class="text-yellow-600 italic">You</span></h1>
+            <p class="uppercase tracking-[0.3em] text-sm font-bold text-slate-500 mb-4 mt-8 md:mt-0">Unit 5 Final Design Project</p>
+            <h1 class="text-5xl md:text-6xl font-black mb-4 text-slate-900 tracking-tight">The Museum of <span class="text-yellow-600 italic">You</span></h1>
             <div class="w-24 h-1 bg-yellow-500 mx-auto mb-6"></div>
-            <p class="text-xl md:text-2xl text-slate-600 serif italic max-w-2xl mx-auto">
+            <p class="text-xl text-slate-600 serif italic max-w-2xl mx-auto">
                 "Every person is a walking civilization. It is time to curate your legacy."
             </p>
         </header>
@@ -73,75 +90,131 @@
         <!-- Main Content -->
         <div class="flex flex-col md:flex-row border-t border-slate-200">
             
-            <!-- Left Sidebar (The Brief) -->
-            <div class="md:w-1/3 bg-slate-50 p-8 border-r border-slate-200">
-                <h3 class="serif text-2xl font-bold mb-4 text-slate-900">The Commission</h3>
-                <p class="mb-6 text-sm text-slate-600 text-justify">
-                    The Global Heritage Foundation is funding a brand-new museum dedicated entirely to <strong>your life, memories, and values</strong>. 
-                </p>
-                <p class="mb-6 text-sm text-slate-600 text-justify">
-                    Your task is to design a visually stunning, persuasive <strong>Visitor Brochure</strong> to attract tourists and explain the critical vision behind your collection.
-                </p>
+            <!-- Left Sidebar (The Brief & Vocab) -->
+            <div class="md:w-[35%] bg-slate-50 p-8 border-r border-slate-200 flex flex-col gap-6 relative z-10">
+                <div>
+                    <h3 class="serif text-2xl font-bold mb-4 text-slate-900 border-b-2 border-yellow-500 inline-block pb-1">The Commission</h3>
+                    <p class="mb-3 text-sm text-slate-700 leading-relaxed">
+                        <strong class="text-slate-900">Dear Visionary Curator,</strong>
+                    </p>
+                    <p class="mb-3 text-sm text-slate-600 leading-relaxed text-justify">
+                        The Global Heritage Foundation is funding a brand-new museum dedicated entirely to <strong>your life, memories, and values</strong>. 
+                    </p>
+                    <p class="mb-4 text-sm text-slate-600 leading-relaxed text-justify">
+                        Your task is to draft and design a visually stunning, persuasive <strong>Visitor Brochure</strong> to attract tourists and explain the critical vision behind your collection.
+                    </p>
+                    <div class="bg-yellow-100 border-l-4 border-yellow-500 p-3 text-xs font-bold text-yellow-800">
+                        Target Length: Approximately 300 words.
+                    </div>
+                </div>
                 
-                <div class="bg-slate-900 text-white p-6 rounded-lg shadow-lg relative ticket-cutout mt-8">
-                    <p class="text-yellow-500 text-xs font-bold tracking-widest uppercase mb-2">Brochure Contents</p>
-                    <ul class="text-sm space-y-3 font-medium">
-                        <li class="flex items-start gap-2"><span>🏛️</span> <span>Identity & Vision Statement</span></li>
-                        <li class="flex items-start gap-2"><span>💎</span> <span>3 Featured Artifacts</span></li>
-                        <li class="flex items-start gap-2"><span>✍️</span> <span>Speculative Descriptions</span></li>
-                        <li class="flex items-start gap-2"><span>🧠</span> <span>Curator's Philosophy</span></li>
-                    </ul>
+                <!-- Vocab Bank Module -->
+                <div class="bg-slate-900 text-white p-6 rounded-xl shadow-lg relative ticket-cutout mt-auto">
+                    <p class="text-yellow-500 text-sm font-bold tracking-widest uppercase mb-1 border-b border-slate-700 pb-2">📚 Vocabulary Bank</p>
+                    <p class="text-xs text-slate-400 italic mb-4">Target: Integrate at least 7-8 words.</p>
+                    
+                    <div class="grid grid-cols-2 gap-x-2 gap-y-2 text-[10px] font-medium text-slate-200">
+                        <div class="flex items-center gap-1.5"><div class="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div> archaeological find</div>
+                        <div class="flex items-center gap-1.5"><div class="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div> artifact</div>
+                        <div class="flex items-center gap-1.5"><div class="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div> exhibit / display</div>
+                        <div class="flex items-center gap-1.5"><div class="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div> excavation</div>
+                        <div class="flex items-center gap-1.5"><div class="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div> preservation</div>
+                        <div class="flex items-center gap-1.5"><div class="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div> interpretation</div>
+                        <div class="flex items-center gap-1.5"><div class="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div> admiration</div>
+                        <div class="flex items-center gap-1.5"><div class="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div> civilization</div>
+                        <div class="flex items-center gap-1.5"><div class="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div> dedicate</div>
+                        <div class="flex items-center gap-1.5"><div class="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div> justification</div>
+                        <div class="flex items-center gap-1.5"><div class="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div> permission</div>
+                        <div class="flex items-center gap-1.5"><div class="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div> acquisition</div>
+                        <div class="flex items-center gap-1.5"><div class="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div> loot / repatriate</div>
+                        <div class="flex items-center gap-1.5"><div class="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div> heritage / legacy</div>
+                        <div class="flex items-center gap-1.5"><div class="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div> admit / blame</div>
+                        <div class="flex items-center gap-1.5"><div class="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div> consequences</div>
+                        <div class="flex items-center gap-1.5"><div class="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div> get defensive</div>
+                        <div class="flex items-center gap-1.5"><div class="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div> responsibility</div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Right Content (The Steps) -->
-            <div class="md:w-2/3 floorplan-bg p-8 md:p-12 relative z-10 h-[600px] overflow-y-auto">
+            <!-- Right Content (The Steps & Rubric) - Scrollable -->
+            <div class="md:w-[65%] floorplan-bg p-8 md:p-12 relative z-10 h-[700px] overflow-y-auto custom-scroll">
                 
-                <!-- Step 1 -->
-                <div class="mb-10 bg-white p-6 md:p-8 rounded-xl shadow-md border border-slate-200 hover:-translate-y-1 transition-transform">
-                    <div class="flex items-center gap-4 mb-4 border-b border-slate-100 pb-4">
-                        <span class="bg-yellow-500 text-white w-10 h-10 flex items-center justify-center font-bold text-xl rounded-sm">1</span>
-                        <h2 class="serif text-2xl font-bold text-slate-800">The Front Cover: Vision</h2>
-                    </div>
-                    <p class="text-slate-600 mb-4 text-sm">To attract visitors, your brochure needs a powerful cover. Decide on:</p>
-                    <ul class="list-disc list-inside text-sm text-slate-700 space-y-2 ml-2">
+                <!-- Panel 1 -->
+                <div class="mb-8 bg-white p-6 rounded-xl shadow-md border border-slate-200 hover:-translate-y-1 transition-transform relative">
+                    <span class="absolute -top-3 left-6 bg-slate-900 text-white text-[10px] font-bold uppercase tracking-widest py-1 px-3 rounded">Brochure Page 1</span>
+                    <h2 class="serif text-xl font-bold text-slate-800 mt-2 mb-3">The Front Cover: Identity & Vision</h2>
+                    <p class="text-slate-600 mb-3 text-sm">To attract visitors, your brochure needs a powerful cover. You must decide on:</p>
+                    <ul class="list-disc list-inside text-sm text-slate-700 space-y-1.5 ml-2">
                         <li><strong>The Name:</strong> (e.g., <em>The Gallery of Emre, The Teenage Archives</em>)</li>
                         <li><strong>The Hook:</strong> A catchy slogan to make tourists want to enter.</li>
-                        <li><strong>The Vision Statement:</strong> Write 2 sentences using unit vocabulary (e.g., <em>preserve, legacy, heritage, exhibit</em>) explaining *why* this museum was built.</li>
+                        <li><strong>The Vision Statement:</strong> Write 2-3 sentences using unit vocabulary (e.g., <em>preserve, legacy, heritage</em>) explaining *why* this museum was built.</li>
                     </ul>
                 </div>
 
-                <!-- Step 2 & 3 Combined -->
-                <div class="mb-10 bg-white p-6 md:p-8 rounded-xl shadow-md border-l-4 border-slate-900 hover:-translate-y-1 transition-transform relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-20 h-20 bg-slate-100 rounded-bl-full -z-10"></div>
-                    <div class="flex items-center gap-4 mb-4 border-b border-slate-100 pb-4">
-                        <span class="bg-slate-900 text-white w-10 h-10 flex items-center justify-center font-bold text-xl rounded-sm">2</span>
-                        <h2 class="serif text-2xl font-bold text-slate-800">Inside Pages: Exhibit Highlights</h2>
-                    </div>
-                    <p class="text-slate-600 mb-4 text-sm">Select <strong>three specific items</strong> from your life (e.g., a skateboard, a concert ticket, a favorite hoodie). Include a photo for each, accompanied by a <strong>Speculative Description</strong> to entertain your visitors.</p>
-                    <p class="text-slate-600 mb-4 text-sm font-bold">⚠️ Grammar Requirement: You must guess how historians in the year 3000 will interpret each item using modals (must have, might be, can't have).</p>
+                <!-- Panels 2, 3, 4 -->
+                <div class="mb-8 bg-white p-6 rounded-xl shadow-md border-l-4 border-slate-900 hover:-translate-y-1 transition-transform relative overflow-hidden">
+                    <span class="absolute -top-3 left-6 bg-slate-900 text-white text-[10px] font-bold uppercase tracking-widest py-1 px-3 rounded">Brochure Pages 2-4</span>
+                    <h2 class="serif text-xl font-bold text-slate-800 mt-2 mb-3">Inside Pages: Exhibit Highlights</h2>
+                    <p class="text-slate-600 mb-4 text-sm">Select <strong>three specific items</strong> from your life (e.g., a skateboard, a ticket, a hoodie). Include a visual for each, accompanied by a <strong>Speculative Description</strong> guessing how historians in the year 3000 will interpret it.</p>
+                    <p class="text-red-700 bg-red-50 p-2 rounded mb-4 text-xs font-bold border border-red-200">
+                        ⚠️ Grammar Requirement: You must use modals of speculation (must have, might be, can't have) for each item!
+                    </p>
                     
                     <div class="bg-slate-50 p-4 rounded border border-slate-200 text-sm">
-                        <p class="font-bold text-slate-800 uppercase tracking-widest text-xs mb-2">Example Brochure Text:</p>
-                        <h4 class="font-bold serif text-lg text-yellow-700">Exhibit 1: The Stratocaster Guitar</h4>
-                        <p class="italic text-slate-600 mb-2 border-b border-slate-200 pb-2">"This object produced loud, echoing noises. Future historians <strong class="text-slate-900">might think</strong> it was a weapon used to scare enemies. It <strong class="text-slate-900">must have required</strong> great skill to hold, but it <strong class="text-slate-900">can't have been</strong> comfortable to sleep with."</p>
+                        <p class="font-bold text-slate-800 uppercase tracking-widest text-[10px] mb-1">Example Text:</p>
+                        <p class="italic text-slate-600 border-l-2 border-yellow-500 pl-3 py-1">"This object produced loud noises. Future historians <strong class="text-slate-900">might think</strong> it was a weapon. It <strong class="text-slate-900">must have required</strong> great skill to hold, but it <strong class="text-slate-900">can't have been</strong> comfortable."</p>
                     </div>
                 </div>
 
-                <!-- Step 4: Critical Thinking (UPDATED) -->
-                <div class="mb-10 bg-gradient-to-br from-slate-900 to-slate-800 p-6 md:p-8 rounded-xl shadow-lg border border-slate-700 hover:-translate-y-1 transition-transform text-white">
-                    <div class="flex items-center gap-4 mb-4 border-b border-slate-600 pb-4">
-                        <span class="bg-yellow-500 text-slate-900 w-10 h-10 flex items-center justify-center font-bold text-xl rounded-sm">3</span>
-                        <h2 class="serif text-2xl font-bold text-white">Back Cover: Curator's Philosophy</h2>
-                    </div>
-                    <p class="text-slate-300 mb-4 text-sm">This is where you show deep critical thinking. Visitors want to know the deeper meaning behind your collection. Write a final "Curator's Philosophy" paragraph for the back cover addressing these core questions:</p>
+                <!-- Panels 5 & 6 -->
+                <div class="mb-10 bg-gradient-to-br from-slate-900 to-slate-800 p-6 rounded-xl shadow-lg border border-slate-700 hover:-translate-y-1 transition-transform text-white relative mt-10">
+                    <span class="absolute -top-3 left-6 bg-yellow-500 text-slate-900 text-[10px] font-bold uppercase tracking-widest py-1 px-3 rounded">Brochure Pages 5-6</span>
+                    <h2 class="serif text-xl font-bold text-white mt-2 mb-3">Back Cover: Curator's Philosophy</h2>
+                    <p class="text-slate-300 mb-4 text-sm">This is where you show deep critical thinking. Visitors want to know the deeper meaning behind your collection. Write 2-3 detailed paragraphs answering these core questions:</p>
                     
-                    <div class="bg-slate-800 p-5 rounded border-l-4 border-yellow-500 text-sm italic font-medium text-slate-200 space-y-4">
-                        <p><strong class="text-yellow-400 not-italic uppercase text-xs tracking-widest block mb-1">1. The Ultimate Artifact</strong> If this museum burns down in a thousand years, and archaeologists can only save ONE of your artifacts, which one should it be? What does that single item teach the future about what the youth of the 21st century truly valued?</p>
-                        
-                        <p><strong class="text-yellow-400 not-italic uppercase text-xs tracking-widest block mb-1">2. Perspective & Bias</strong> To what extent does perspective and bias influence whether that single artifact can be considered reliable evidence of the values of 21st-century youth?</p>
-                        
-                        <p><strong class="text-yellow-400 not-italic uppercase text-xs tracking-widest block mb-1">3. The Curator's Responsibility</strong> How does the act of selecting and preserving knowledge shape representation, and what responsibilities come with deciding what future generations will know about us?</p>
+                    <ol class="space-y-4 text-sm text-slate-200 font-medium pl-4 list-decimal marker:text-yellow-500 marker:font-bold">
+                        <li class="pl-2"><strong class="text-yellow-400">The Ultimate Artifact:</strong> If this museum burns down in a thousand years, and archaeologists can only save ONE of your artifacts, which one should it be? What does that single item teach the future about what the youth of the 21st century truly valued?</li>
+                        <li class="pl-2"><strong class="text-yellow-400">Perspective & Bias:</strong> To what extent does perspective and bias influence whether a single artifact can be considered reliable evidence of the values of 21st-century youth?</li>
+                        <li class="pl-2"><strong class="text-yellow-400">The Curator's Responsibility:</strong> How does the act of selecting and preserving knowledge shape representation, and what responsibilities come with deciding what future generations will know about us?</li>
+                    </ol>
+                </div>
+
+                <!-- B2 Level Rubric Display -->
+                <div class="bg-white border-2 border-slate-200 rounded-xl overflow-hidden shadow-sm">
+                    <div class="bg-slate-100 py-3 px-5 border-b border-slate-200">
+                        <h3 class="serif text-lg font-bold text-slate-800">B2 Level Grading Rubric</h3>
+                    </div>
+                    <div class="p-0">
+                        <table class="w-full text-left text-xs text-slate-600">
+                            <tr class="border-b border-slate-100">
+                                <td class="p-4 w-1/4 align-top font-bold text-slate-800 bg-slate-50">Grammar (20 pts)</td>
+                                <td class="p-4 align-top">
+                                    <p class="mb-2">Accurate and effective use of Modals of Speculation across the descriptions.</p>
+                                    <div class="text-[10px] text-red-600 font-mono">Deductions: [-5/-10] Missing modals. [-2/-5] Basic errors impeding meaning.</div>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-slate-100">
+                                <td class="p-4 align-top font-bold text-slate-800 bg-slate-50">Vocabulary (20 pts)</td>
+                                <td class="p-4 align-top">
+                                    <p class="mb-2">Successfully integrates 7-8 target words appropriately in formal context.</p>
+                                    <div class="text-[10px] text-red-600 font-mono">Deductions: [-2/-4/-6] Missing target words. [-2/-5] Unnatural context.</div>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-slate-100">
+                                <td class="p-4 align-top font-bold text-slate-800 bg-slate-50">Content & Critical Thinking (30 pts)</td>
+                                <td class="p-4 align-top">
+                                    <p class="mb-2">Philosophy section directly answers TOK-style questions regarding bias, perspective, and responsibility. Descriptions are highly creative.</p>
+                                    <div class="text-[10px] text-red-600 font-mono">Deductions: [-5/-10/-15] Philosophy lacks depth or ignores prompts.</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 align-top font-bold text-slate-800 bg-slate-50">Task Achievement & Format (30 pts)</td>
+                                <td class="p-4 align-top">
+                                    <p class="mb-2">Reaches ~300 words. All required elements/sketches present. Tri-fold brochure layout is well-organized and beautiful.</p>
+                                    <div class="text-[10px] text-red-600 font-mono">Deductions: [-5/-10] Missing sections. [-5/-10] Messy layout. [-5] Under word count.</div>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
 
@@ -149,11 +222,20 @@
         </div>
 
         <!-- Footer / Submission -->
-        <div class="bg-slate-900 text-center p-8 border-t-4 border-yellow-500">
-            <h3 class="text-white font-bold tracking-widest uppercase mb-2">Final Deliverable</h3>
-            <p class="text-slate-400 text-sm max-w-xl mx-auto">
-                Use a template tool (like Canva's "Tri-Fold Brochure" or Google Docs) to design your final product. Pay attention to layout, images, and visual appeal. Submit your digital brochure PDF to the class folder!
-            </p>
+        <div class="bg-slate-900 p-8 border-t-4 border-yellow-500 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="text-left md:w-2/3">
+                <h3 class="text-white font-bold tracking-widest uppercase mb-2 text-lg">Final Deliverable</h3>
+                <p class="text-slate-400 text-sm">
+                    <strong>Time to build your museum!</strong> Take the blank A4 paper given to you by your teacher and fold it carefully into three equal sections (a tri-fold). Use your drafting guide to transfer your text, layout your sketches, and design the final beautiful brochure for <em>The Museum of You</em>.
+                </p>
+            </div>
+            
+            <div class="md:w-1/3 text-right">
+                <a href="https://www.youtube.com/shorts/eJXnkXOfwUs" target="_blank" class="inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-500 text-white font-bold py-3 px-6 rounded-full transition-all shadow-[0_0_20px_rgba(220,38,38,0.4)] hover:shadow-[0_0_30px_rgba(220,38,38,0.6)]">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                    Watch Brochure Example
+                </a>
+            </div>
         </div>
 
     </div>
